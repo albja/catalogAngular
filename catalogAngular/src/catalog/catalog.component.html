@@ -1,16 +1,14 @@
-<label>No price</label>
-<div *ngFor="let product of model">
-  <ul *ngIf="!product.price">
-    <li>{{ product.name }}</li>
-  </ul>
-</div>
-<label>Discounted</label>
-<ul *ngFor="let product of model">
+<h1>Absence de prix</h1>
+<ng-container *ngFor="let product of model">
+  <li *ngIf="!product.price">{{ product.name }}</li>
+</ng-container>
+<h2>Produits en Promo</h2>
+<ng-container *ngFor="let product of model">
   <li *ngIf="product.isInDiscount">{{ product.name }}</li>
-</ul>
-<label>The others</label>
-<div *ngFor="let product of model">
-  <ul *ngIf="!product.isInDiscount && product.price">
-    <li>{{ product.name }}</li>
-  </ul>
-</div>
+</ng-container>
+<h3>Les autres produits : qui ont un prix mais pas de promos</h3>
+<ng-container *ngFor="let product of model">
+  <li *ngIf="!product.isInDiscount && product.price">
+    {{ product.name }}
+  </li>
+</ng-container>
